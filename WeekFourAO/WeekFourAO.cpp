@@ -210,13 +210,144 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe:: Entry human, 
     int cornerChoice = 0;
 
     do {
-
-        // Choose Center Square
-        if (t.board[1][1] == t.EMPTY) {
-            t.board[1][1] = (char)computer;
+        // Choose Winning Square
+        // first col
+        if (t.board[0][0] == (char)computer && t.board[0][1] == (char)computer && t.board[0][2] == t.EMPTY)
+        {
+            t.board[0][2] = (char)computer; // Down
+            return false;
+        }
+        else if (t.board[0][2] == (char)computer && t.board[0][1] == (char)computer && t.board[0][0] == t.EMPTY)
+        {
+            t.board[0][0] = (char)computer; // Up
+            return false;
+        }
+        else if (t.board[0][0] == (char)computer && t.board[0][2] == (char)computer && t.board[0][1] == t.EMPTY)
+        {
+            t.board[0][1] = (char)computer; // Middle
             return false;
         }
 
+        // second col
+        else if (t.board[1][0] == (char)computer && t.board[1][1] == (char)computer && t.board[1][2] == t.EMPTY)
+        {
+            t.board[1][2] = (char)computer; // Down
+            return false;
+        }
+        else if (t.board[1][2] == (char)computer && t.board[1][1] == (char)computer && t.board[1][0] == t.EMPTY)
+        {
+            t.board[1][0] = (char)computer; // Up
+            return false;
+        }
+        else if (t.board[1][0] == (char)computer && t.board[1][2] == (char)computer && t.board[1][1] == t.EMPTY)
+        {
+            t.board[1][1] = (char)computer; // Middle
+            return false;
+        }
+
+        // third col
+        else if (t.board[2][0] == (char)computer && t.board[2][1] == (char)computer && t.board[2][2] == t.EMPTY)
+        {
+            t.board[2][2] = (char)computer; // Down
+            return false;
+        }
+        else if (t.board[2][2] == (char)computer && t.board[2][1] == (char)computer && t.board[2][0] == t.EMPTY)
+        {
+            t.board[2][0] = (char)computer; // Up
+            return false;
+        }
+        else if (t.board[2][0] == (char)computer && t.board[2][2] == (char)computer && t.board[2][1] == t.EMPTY)
+        {
+            t.board[2][1] = (char)computer; // Middle
+            return false;
+        }
+
+        // first row
+        else if (t.board[0][0] == (char)computer && t.board[1][0] == (char)computer && t.board[2][0] == t.EMPTY)
+        {
+            t.board[2][0] = (char)computer; // Right
+            return false;
+        }
+        else if (t.board[2][0] == (char)computer && t.board[1][0] == (char)computer && t.board[0][0] == t.EMPTY)
+        {
+            t.board[0][0] = (char)computer; // Left
+            return false;
+        }
+        else if (t.board[0][0] == (char)computer && t.board[0][2] == (char)computer && t.board[0][1] == t.EMPTY)
+        {
+            t.board[0][1] = (char)computer; // Middle
+            return false;
+        }
+
+        // second row
+        else if (t.board[0][1] == (char)computer && t.board[1][1] == (char)computer && t.board[2][1] == t.EMPTY)
+        {
+            t.board[2][1] = (char)computer; // Right
+            return false;
+        }
+        else if (t.board[2][1] == (char)computer && t.board[1][1] == (char)computer && t.board[0][1] == t.EMPTY)
+        {
+            t.board[0][1] = (char)computer; // Left
+            return false;
+        }
+        else if (t.board[0][1] == (char)computer && t.board[2][1] == (char)computer && t.board[1][1] == t.EMPTY)
+        {
+            t.board[1][1] = (char)computer; // Middle
+            return false;
+        }
+
+        // third row
+        else if (t.board[0][2] == (char)computer && t.board[1][2] == (char)computer && t.board[2][2] == t.EMPTY)
+        {
+            t.board[2][2] = (char)computer; // Right
+            return false;
+        }
+        else if (t.board[2][2] == (char)computer && t.board[1][2] == (char)computer && t.board[0][2] == t.EMPTY)
+        {
+            t.board[0][2] = (char)computer; // Left
+            return false;
+        }
+        else if (t.board[0][2] == (char)computer && t.board[2][2] == (char)computer && t.board[1][2] == t.EMPTY)
+        {
+            t.board[1][2] = (char)computer; // Middle
+            return false;
+        }
+
+        // diagonal 1
+        else if (t.board[0][0] == (char)computer && t.board[1][1] == (char)computer && t.board[2][2] == t.EMPTY)
+        {
+            t.board[2][2] = (char)computer; // Left to Right Diagonal
+            return false;
+        }
+        else if (t.board[2][2] == (char)computer && t.board[1][1] == (char)computer && t.board[0][0] == t.EMPTY)
+        {
+            t.board[0][0] = (char)computer; // Right to Left Diagonal
+            return false;
+        }
+        else if (t.board[0][0] == (char)computer && t.board[2][2] == (char)computer && t.board[1][1] == t.EMPTY)
+        {
+            t.board[1][1] = (char)computer; // Middle
+            return false;
+        }
+
+        // diagonal 2
+        else if (t.board[0][2] == (char)computer && t.board[1][1] == (char)computer && t.board[2][0] == t.EMPTY)
+        {
+            t.board[2][0] = (char)computer; // Left to Right Diagonal
+            return false;
+        }
+        else if (t.board[2][0] == (char)computer && t.board[1][1] == (char)computer && t.board[0][2] == t.EMPTY)
+        {
+            t.board[0][2] = (char)computer; // Right to Left Diagonal
+            return false;
+        }
+        else if (t.board[0][2] == (char)computer && t.board[2][0] == (char)computer && t.board[1][1] == t.EMPTY)
+        {
+            t.board[1][1] = (char)computer; // Up
+            return false;
+        }
+
+        // For choosing a blocking square
         // first col
         if (t.board[0][0] == (char)human && t.board[0][1] == (char)human && t.board[0][2] == t.EMPTY)
         {
@@ -353,6 +484,12 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe:: Entry human, 
             return false;
         }
 
+        // Choose Center Square
+        if (t.board[1][1] == t.EMPTY) {
+            t.board[1][1] = (char)computer;
+            return false;
+        }
+
         // Choose a middle square if computer has a corner square
         if (t.board[0][0] == (char)computer && t.board[1][0] == t.EMPTY) {
             t.board[1][0] = (char)computer;
@@ -387,143 +524,7 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe:: Entry human, 
             return false;
         }
 
-        // Choose Winning Square
-        // first col
-        if (t.board[0][0] == (char)computer && t.board[0][1] == (char)computer && t.board[0][2] == t.EMPTY)
-        {
-            t.board[0][2] = (char)computer; // Down
-            return false;
-        }
-        else if (t.board[0][2] == (char)computer && t.board[0][1] == (char)computer && t.board[0][0] == t.EMPTY)
-        {
-            t.board[0][0] = (char)computer; // Up
-            return false;
-        }
-        else if (t.board[0][0] == (char)computer && t.board[0][2] == (char)computer && t.board[0][1] == t.EMPTY)
-        {
-            t.board[0][1] = (char)computer; // Middle
-            return false;
-        }
-
-        // second col
-        else if (t.board[1][0] == (char)computer && t.board[1][1] == (char)computer && t.board[1][2] == t.EMPTY)
-        {
-            t.board[1][2] = (char)computer; // Down
-            return false;
-        }
-        else if (t.board[1][2] == (char)computer && t.board[1][1] == (char)computer && t.board[1][0] == t.EMPTY)
-        {
-            t.board[1][0] = (char)computer; // Up
-            return false;
-        }
-        else if (t.board[1][0] == (char)computer && t.board[1][2] == (char)computer && t.board[1][1] == t.EMPTY)
-        {
-            t.board[1][1] = (char)computer; // Middle
-            return false;
-        }
-
-        // third col
-        else if (t.board[2][0] == (char)computer && t.board[2][1] == (char)computer && t.board[2][2] == t.EMPTY)
-        {
-            t.board[2][2] = (char)computer; // Down
-            return false;
-        }
-        else if (t.board[2][2] == (char)computer && t.board[2][1] == (char)computer && t.board[2][0] == t.EMPTY)
-        {
-            t.board[2][0] = (char)computer; // Up
-            return false;
-        }
-        else if (t.board[2][0] == (char)computer && t.board[2][2] == (char)computer && t.board[2][1] == t.EMPTY)
-        {
-            t.board[2][1] = (char)computer; // Middle
-            return false;
-        }
-
-        // first row
-        else if (t.board[0][0] == (char)computer && t.board[1][0] == (char)computer && t.board[2][0] == t.EMPTY)
-        {
-            t.board[2][0] = (char)computer; // Right
-            return false;
-        }
-        else if (t.board[2][0] == (char)computer && t.board[1][0] == (char)computer && t.board[0][0] == t.EMPTY)
-        {
-            t.board[0][0] = (char)computer; // Left
-            return false;
-        }
-        else if (t.board[0][0] == (char)computer && t.board[0][2] == (char)computer && t.board[0][1] == t.EMPTY)
-        {
-            t.board[0][1] = (char)computer; // Middle
-            return false;
-        }
-
-        // second row
-        else if (t.board[0][1] == (char)computer && t.board[1][1] == (char)computer && t.board[2][1] == t.EMPTY)
-        {
-            t.board[2][1] = (char)computer; // Right
-            return false;
-        }
-        else if (t.board[2][1] == (char)computer && t.board[1][1] == (char)computer && t.board[0][1] == t.EMPTY)
-        {
-            t.board[0][1] = (char)computer; // Left
-            return false;
-        }
-        else if (t.board[0][1] == (char)computer && t.board[2][1] == (char)computer && t.board[1][1] == t.EMPTY)
-        {
-            t.board[1][1] = (char)computer; // Middle
-            return false;
-        }
-
-        // third row
-        else if (t.board[0][2] == (char)computer && t.board[1][2] == (char)computer && t.board[2][2] == t.EMPTY)
-        {
-            t.board[2][2] = (char)computer; // Right
-            return false;
-        }
-        else if (t.board[2][2] == (char)computer && t.board[1][2] == (char)computer && t.board[0][2] == t.EMPTY)
-        {
-            t.board[0][2] = (char)computer; // Left
-            return false;
-        }
-        else if (t.board[0][2] == (char)computer && t.board[2][2] == (char)computer && t.board[1][2] == t.EMPTY)
-        {
-            t.board[1][2] = (char)computer; // Middle
-            return false;
-        }
-
-        // diagonal 1
-        else if (t.board[0][0] == (char)computer && t.board[1][1] == (char)computer && t.board[2][2] == t.EMPTY)
-        {
-            t.board[2][2] = (char)computer; // Left to Right Diagonal
-            return false;
-        }
-        else if (t.board[2][2] == (char)computer && t.board[1][1] == (char)computer && t.board[0][0] == t.EMPTY)
-        {
-            t.board[0][0] = (char)computer; // Right to Left Diagonal
-            return false;
-        }
-        else if (t.board[0][0] == (char)computer && t.board[2][2] == (char)computer && t.board[1][1] == t.EMPTY)
-        {
-        t.board[1][1] = (char)computer; // Middle
-        return false;
-        }
-
-        // diagonal 2
-        else if (t.board[0][2] == (char)computer && t.board[1][1] == (char)computer && t.board[2][0] == t.EMPTY)
-        {
-            t.board[2][0] = (char)computer; // Left to Right Diagonal
-            return false;
-        }
-        else if (t.board[2][0] == (char)computer && t.board[1][1] == (char)computer && t.board[0][2] == t.EMPTY)
-        {
-            t.board[0][2] = (char)computer; // Right to Left Diagonal
-            return false;
-        }
-        else if (t.board[0][2] == (char)computer && t.board[2][0] == (char)computer && t.board[1][1] == t.EMPTY)
-        {
-        t.board[1][1] = (char)computer; // Up
-        return false;
-        }
-
+        /*
         // If a corner square is open, randomly picks one, and then continues from there
         cornerChoice = rand() % 4 + 1;
         if (cornerChoice == 1 && t.board[0][0] == t.EMPTY) {
@@ -542,6 +543,7 @@ static bool getComputerMove(TicTacToe::Entry computer, TicTacToe:: Entry human, 
             t.board[2][2] = (char)computer;
             return false;
         }
+        */
 
         // choose at random until we find a space that's empty
         do {
